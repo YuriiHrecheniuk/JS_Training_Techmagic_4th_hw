@@ -1,0 +1,9 @@
+<p *ngIf="!trending">trending doesn't work!</p>
+
+<ol *ngIf="trending">
+  <li *ngFor="let movie of trending">
+    <a routerLink="./detail/{{movie.id}}">{{movie.title}}</a>
+  </li>
+</ol>
+
+<router-outlet></router-outlet>

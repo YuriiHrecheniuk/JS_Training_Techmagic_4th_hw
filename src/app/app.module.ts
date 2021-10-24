@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieService } from './services/movie.service';
+import { TrendingComponent } from './components/trending/trending.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ShowDescriptionComponent } from './components/show-description/show-description.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    TrendingComponent,
+    DetailComponent,
+    NavbarComponent,
+    ShowDescriptionComponent,
   ],
   imports: [
     BrowserModule,
