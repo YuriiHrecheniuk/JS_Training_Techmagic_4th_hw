@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {IMovie} from "../../models/movie.interface";
-import {environment} from "../../../environments/environment";
-import {MovieService} from "../../services/movie.service";
-import {IImage} from "../../models/image.interface";
+import {IMovie} from '../../models/movie.interface';
+import {environment} from '../../../environments/environment';
+import {MovieService} from '../../services/movie.service';
+import {IImage} from '../../models/image.interface';
 
 
 @Component({
@@ -16,15 +16,7 @@ export class DetailComponent implements OnInit {
 
   posterUrl = environment.IMG_URL;
 
-  movie: IMovie = {
-    id: '',
-    vote_average: 0,
-    title: '',
-    release_date: '',
-    poster_path: '',
-    overview: '',
-    genres: []
-  };
+  movie: any;
 
   constructor(private route: ActivatedRoute,
               private movieService: MovieService) { }

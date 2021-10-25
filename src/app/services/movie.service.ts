@@ -1,6 +1,6 @@
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IMovie } from '../models/movie.interface';
 import { Observable } from 'rxjs';
 import {ITrending } from '../models/trending.interface';
@@ -31,9 +31,15 @@ export class MovieService {
       return this.httpClient.get<IImage>(`${environment.BASE_URL}/movie/${movieId}/images`, this.httpOptions);
     }
 
-    public getDiscover(): Observable<IDiscover> {
+    public getDiscover(page: number = 1): Observable<IDiscover> {
+      const queryParams = new HttpParams()
+        .set('vote_average.gte', '8')
+        .set('page', `${page}`)
+        .set('with_original_language', 'en')
+        .set('include_adult', 'false');
+
       return this.httpClient.get<IDiscover>(`${environment.BASE_URL}/discover/movie`,
-        { ...this.httpOptions, ...{ vote_average: { gte: 8 } } });
+        { ...this.httpOptions, params: queryParams});
     }
 
 }

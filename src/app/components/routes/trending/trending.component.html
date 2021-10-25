@@ -1,0 +1,7 @@
+<ol *ngIf="movieIDs">
+  <li *ngFor="let id of movieIDs" class="trending-container">
+    <app-show-description [movieId]="id"></app-show-description>
+  </li>
+</ol>
+
+<router-outlet></router-outlet>

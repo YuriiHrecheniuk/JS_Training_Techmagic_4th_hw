@@ -1,0 +1,15 @@
+:host {
+  position: relative;
+  top: 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .movie-description {
+    display: block;
+    width: 700px;
+    min-height: 500px;
+    margin: auto auto 90px;
+  }
+}
