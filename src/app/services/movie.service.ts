@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import {ITrending } from '../models/trending.interface';
 import { IImage } from '../models/image.interface';
 import { IDiscover } from '../models/discover.interface'
+import {ISearchParams} from "../models/search-params.interface";
+import {ITV} from "../models/tv.interface";
 
 @Injectable()
 export class MovieService {
@@ -40,6 +42,14 @@ export class MovieService {
 
       return this.httpClient.get<IDiscover>(`${environment.BASE_URL}/discover/movie`,
         { ...this.httpOptions, params: queryParams});
+    }
+
+    public search(searchParams: ISearchParams): Observable<IMovie[] | ITV[]> {
+      const queryParams = new HttpParams()
+        .set('query', searchParams.query);
+
+      return this.httpClient.get<IMovie[] | ITV[]>(`${environment.BASE_URL}/search/${searchParams.type}`,
+        { ...this.httpOptions, params: queryParams });
     }
 
 }

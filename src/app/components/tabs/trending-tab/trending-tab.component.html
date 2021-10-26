@@ -1,0 +1,10 @@
+<main class="main-content">
+  <h1 class="main-content_title">Top shows this week:</h1>
+  <ol *ngIf="movieIDs">
+    <li *ngFor="let id of movieIDs" class="trending-container">
+      <app-show-description [movieId]="id"></app-show-description>
+    </li>
+  </ol>
+
+  <router-outlet></router-outlet>
+</main>

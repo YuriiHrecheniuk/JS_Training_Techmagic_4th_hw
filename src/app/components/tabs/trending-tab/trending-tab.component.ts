@@ -5,17 +5,17 @@ import {ITrending} from "../../../models/trending.interface";
 
 @Component({
   selector: 'app-trending',
-  templateUrl: './trending.component.html',
-  styleUrls: ['./trending.component.scss']
+  templateUrl: './trending-tab.component.html',
+  styleUrls: ['./trending-tab.component.scss']
 })
-export class TrendingComponent implements OnInit {
+export class TrendingTabComponent implements OnInit {
 
-  movieIDs: number[] = [];
+  movieIDs!: number[];
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.movieService.getTrending('movie', 'day')
+    this.movieService.getTrending('movie', 'week')
       .subscribe((trending: ITrending) => {
         this.movieIDs = trending.results.map(movie => movie.id);
       });

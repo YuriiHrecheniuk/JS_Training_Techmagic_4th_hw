@@ -8,6 +8,14 @@
   }
 }
 
+:host-context(.home-container) {
+  .show-description {
+    width: 700px;
+    min-height: 500px;
+    margin: auto auto 90px;
+  }
+}
+
 .show-description {
   font-size: 1.2rem;
   box-sizing: border-box;
@@ -26,6 +34,7 @@
     align-content: center;
 
     img {
+      margin-right: 50px;
       width: 90%;
       border-radius: 10px;
     }

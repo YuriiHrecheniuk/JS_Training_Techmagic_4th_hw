@@ -1,4 +1,4 @@
-/* To learn more detail this file see: https://angular.io/config/tsconfig. */
+/* To learn more detail-tab this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {

@@ -1,0 +1,28 @@
+<form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" class="search-form">
+  <div class="search-field">
+    <input type="search"
+           required
+           name="query"
+           #query="ngModel"
+           id="search-field"
+           ngModel>
+
+    <input type="submit" value="search" [disabled]="query.invalid">
+  </div>
+
+  <div>
+    <label for="movie-radio">movie</label>
+    <input type="radio"
+           id="movie-radio"
+           value="movie"
+           name="type"
+           [ngModel]="type">
+
+    <label for="tv-radio">tv</label>
+    <input type="radio"
+           id="tv-radio"
+           value="tv"
+           name="type"
+           [ngModel]="type">
+  </div>
+</form>

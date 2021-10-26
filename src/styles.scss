@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
+:root {
+  --main-font: Roboto, sans-serif;
+}
+
 body, html {
   height: 100vh;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: var(--main-font);
+}
+
+.main-content {
+  position: relative;
+  top: 20px;
+
+  &_title {
+    text-transform: uppercase;
+    text-align: center;
+  }
 }

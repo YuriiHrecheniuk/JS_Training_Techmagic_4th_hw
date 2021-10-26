@@ -6,10 +6,10 @@ import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home-tab.component.html',
+  styleUrls: ['./home-tab.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeTabComponent implements OnInit {
 
   movieId = 0;
 

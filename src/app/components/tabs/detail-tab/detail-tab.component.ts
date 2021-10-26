@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {IMovie} from '../../models/movie.interface';
-import {environment} from '../../../environments/environment';
-import {MovieService} from '../../services/movie.service';
-import {IImage} from '../../models/image.interface';
+import {IMovie} from '../../../models/movie.interface';
+import {environment} from '../../../../environments/environment';
+import {MovieService} from '../../../services/movie.service';
+import {IImage} from '../../../models/image.interface';
 
 
 @Component({
   selector: 'app-about',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  templateUrl: './detail-tab.component.html',
+  styleUrls: ['./detail-tab.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailTabComponent implements OnInit {
 
   posterUrl = environment.IMG_URL;
 
