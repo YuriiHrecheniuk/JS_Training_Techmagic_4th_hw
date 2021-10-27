@@ -1,8 +1,5 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { MovieService } from '../../../services/movie.service';
-import { IMovie } from '../../../models/movie.interface';
-import { IImage } from 'src/app/models/image.interface';
-import {environment} from "../../../../environments/environment";
+import {Component, OnInit} from '@angular/core';
+import {MovieService} from '../../../services/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +10,8 @@ export class HomeTabComponent implements OnInit {
 
   movieId = 0;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService) {
+  }
 
   ngOnInit(): void {
     this.movieService.getDiscover(getRandomInt(1, 501))

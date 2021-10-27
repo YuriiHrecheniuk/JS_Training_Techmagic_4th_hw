@@ -1,8 +1,8 @@
-<div *ngIf="movie" class="show-description">
+<div *ngIf="show" class="show-description">
   <div class="show-description_container poster" id="poster"><img src="{{posterUrl}}" alt="poster"></div>
   <div class="show-description_container" id="description">
-    <h2>{{movie.title}}</h2>
-    <span *ngFor="let genre of movie.genres" class="genre">{{genre.name | lowercase}}; </span>
-    <p>{{movie.overview}}</p>
+    <h2 class="title">{{show.title || show.name}}</h2>
+    <div class="genres"><span *ngFor="let genre of show.genres" class="genre">{{genre.name | lowercase}}; </span></div>
+    <p class="overview">{{show.overview}}</p>
   </div>
 </div>

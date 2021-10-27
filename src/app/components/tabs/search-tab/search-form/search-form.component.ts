@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {ISearchParams} from "../../../../models/search-params.interface";
-import {NgForm} from "@angular/forms";
+import {ISearchParams} from '../../../../models/search-params.interface';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-search-form',

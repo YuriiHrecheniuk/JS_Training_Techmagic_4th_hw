@@ -1,29 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { IMovie } from 'src/app/models/movie.interface';
-import {ISearchParams} from "../../../models/search-params.interface";
-import {ITV} from "../../../models/tv.interface";
-import {MovieService} from "../../../services/movie.service";
+import {Component} from '@angular/core';
+import {ISearchParams} from '../../../models/search-params.interface';
+import {MovieService} from '../../../services/movie.service';
+import {IShow} from '../../../models/show.interface';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search-tab.component.html',
   styleUrls: ['./search-tab.component.scss']
 })
-export class SearchTabComponent implements OnInit {
+export class SearchTabComponent {
 
-  searchResults: IMovie[] | ITV[] = [];
+  type!: 'movie' | 'tv';
 
-  constructor(private movieService: MovieService) { }
+  searchResults: IShow[] = [];
 
-  ngOnInit(): void {
+  constructor(private movieService: MovieService) {
   }
 
   search(searchParams: ISearchParams): void {
+    this.type = searchParams.type;
+
     this.movieService.search(searchParams)
-      .subscribe(results => {
-        this.searchResults = results;
-        console.log('here')
-        console.log(this.searchResults);
+      .subscribe(searchResults => {
+        this.searchResults = searchResults.results;
       });
   }
 

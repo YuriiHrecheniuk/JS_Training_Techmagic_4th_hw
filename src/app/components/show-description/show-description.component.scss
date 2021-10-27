@@ -1,23 +1,4 @@
-:host-context(.trending-container) {
-  .show-description_container {
-    flex: 3;
-  }
-
-  .poster {
-    flex: 1;
-  }
-}
-
-:host-context(.home-container) {
-  .show-description {
-    width: 700px;
-    min-height: 500px;
-    margin: auto auto 90px;
-  }
-}
-
 .show-description {
-  font-size: 1.2rem;
   box-sizing: border-box;
   max-height: fit-content;
   display: flex;
@@ -42,5 +23,57 @@
 
   .genre {
     font-style: italic;
+  }
+}
+
+:host-context(.trending-container) {
+  .show-description_container {
+    font-size: 1.2rem;
+    flex: 3;
+  }
+
+  .poster {
+    flex: 1;
+  }
+}
+
+:host-context(.home-container) {
+  .show-description {
+    font-size: 1.2rem;
+    width: 700px;
+    min-height: 500px;
+    margin: auto auto 90px;
+  }
+}
+
+:host-context(.search-container) {
+  .show-description {
+    font-size: 90%;
+    flex-flow: column-reverse;
+    max-height: fit-content;
+    width: calc(100vw / 6);
+    margin: auto;
+
+    .title {
+      width: fit-content;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+
+    .genres, .overview {
+      display: none;
+    }
+
+    .poster {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      img {
+        margin-right: 0;
+        width: 90%;
+        border-radius: 10px;
+      }
+    }
   }
 }

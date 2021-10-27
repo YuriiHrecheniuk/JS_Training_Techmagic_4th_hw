@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TrendingTabComponent } from './trending-tab.component';
+import {TrendingTabComponent} from './trending-tab.component';
 
 describe('TrendingComponent', () => {
   let component: TrendingTabComponent;
@@ -8,9 +8,9 @@ describe('TrendingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrendingTabComponent ]
+      declarations: [TrendingTabComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

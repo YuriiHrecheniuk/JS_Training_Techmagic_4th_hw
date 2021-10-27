@@ -1,5 +1,5 @@
 import {IShow} from './show.interface';
 
-export interface ITrending {
+export interface ISearchResults {
   results: IShow[];
 }

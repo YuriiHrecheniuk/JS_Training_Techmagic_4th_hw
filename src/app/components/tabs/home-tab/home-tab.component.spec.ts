@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HomeTabComponent } from './home-tab.component';
+import {HomeTabComponent} from './home-tab.component';
 
 describe('HomeComponent', () => {
   let component: HomeTabComponent;
@@ -8,9 +8,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeTabComponent ]
+      declarations: [HomeTabComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

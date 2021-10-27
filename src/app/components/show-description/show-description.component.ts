@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {IMovie} from "../../models/movie.interface";
-import {MovieService} from "../../services/movie.service";
+import {environment} from '../../../environments/environment';
+import {MovieService} from '../../services/movie.service';
+import {IShow} from '../../models/show.interface';
 
 @Component({
   selector: 'app-show-description',
@@ -10,22 +10,25 @@ import {MovieService} from "../../services/movie.service";
 })
 export class ShowDescriptionComponent implements OnChanges {
 
-  @Input() movieId!: number;
+  @Input() showId!: number;
+  @Input() showType!: 'tv' | 'movie';
   posterUrl = environment.IMG_URL;
   genres: string[] = [];
 
-  movie: IMovie | undefined;
+  show!: IShow;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.movieId) {
-      this.movieService.getMovie(this.movieId)
-      .subscribe((movie: IMovie) => {
-        this.movie = movie;
-        this.posterUrl += movie.poster_path;
-        this.genres = movie.genres.map(genre => genre.name);
-      });
+    if (this.showId) {
+      this.movieService.getShow(this.showType, this.showId)
+        .subscribe(show => {
+          this.show = show;
+          this.posterUrl += show.poster_path;
+          this.genres = show.genres.map(genre => genre.name);
+          console.log(this.show);
+        });
     }
   }
 

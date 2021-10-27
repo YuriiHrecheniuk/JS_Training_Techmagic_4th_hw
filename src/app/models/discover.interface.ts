@@ -1,5 +1,5 @@
-import {IMovie} from "./movie.interface";
+import {IShow} from './show.interface';
 
 export interface IDiscover {
-  results: IMovie[];
+  results: IShow[];
 }

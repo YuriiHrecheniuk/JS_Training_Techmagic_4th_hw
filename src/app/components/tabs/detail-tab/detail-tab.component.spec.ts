@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DetailTabComponent } from './detail-tab.component';
+import {DetailTabComponent} from './detail-tab.component';
 
 describe('AboutComponent', () => {
   let component: DetailTabComponent;
@@ -8,9 +8,9 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailTabComponent ]
+      declarations: [DetailTabComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
