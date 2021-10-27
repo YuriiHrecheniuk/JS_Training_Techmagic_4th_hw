@@ -37,6 +37,9 @@
   }
 }
 
+// by using :host-context pseudo class I stylized component
+// to reuse it on different tabs
+
 :host-context(.trending-container) {
   .show-description_container {
     font-size: 1.2rem;

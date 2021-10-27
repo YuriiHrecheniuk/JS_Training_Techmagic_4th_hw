@@ -17,8 +17,7 @@ export class ShowDescriptionComponent implements OnChanges {
 
   show!: IShow;
 
-  constructor(private movieService: ShowService) {
-  }
+  constructor(private movieService: ShowService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.showId) {
@@ -30,5 +29,4 @@ export class ShowDescriptionComponent implements OnChanges {
         });
     }
   }
-
 }

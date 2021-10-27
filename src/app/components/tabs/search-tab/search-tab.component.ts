@@ -14,8 +14,7 @@ export class SearchTabComponent {
 
   searchResultsIds: number[] = [];
 
-  constructor(private movieService: ShowService) {
-  }
+  constructor(private movieService: ShowService) {}
 
   search(searchParams: ISearchParams): void {
     this.type = searchParams.type;
@@ -27,3 +26,5 @@ export class SearchTabComponent {
   }
 
 }
+
+// todo: add button to see more search results

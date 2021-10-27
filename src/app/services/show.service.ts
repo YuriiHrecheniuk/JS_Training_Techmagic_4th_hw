@@ -20,6 +20,9 @@ export class ShowService {
   constructor(private httpClient: HttpClient) {
   }
 
+
+  // we only need full show info in the ShowDescription component
+  // in all other cases we need just ID of the show
   public getShow(showType: 'tv' | 'movie', showId: number): Observable<IShow> {
     return this.httpClient.get<IShow>(`${environment.BASE_URL}/${showType}/${showId}`, this.httpOptions);
   }

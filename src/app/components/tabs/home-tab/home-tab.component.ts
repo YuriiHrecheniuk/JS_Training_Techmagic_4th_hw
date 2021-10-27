@@ -10,11 +10,10 @@ export class HomeTabComponent implements OnInit {
 
   showId = 0;
 
-  constructor(private movieService: ShowService) {
-  }
+  constructor(private showService: ShowService) {}
 
   ngOnInit(): void {
-    this.movieService.getDiscover(getRandomInt(1, 501))
+    this.showService.getDiscover(getRandomInt(1, 501))
       .subscribe(results => {
         this.showId = results[getRandomInt(1, results.length)];
       });
@@ -27,3 +26,7 @@ function getRandomInt(min: number,
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+// when user visits the page he gets a random movie to watch
+
+// todo: add button to refresh random movie

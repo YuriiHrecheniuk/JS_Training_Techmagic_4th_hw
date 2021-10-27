@@ -10,6 +10,8 @@
     <div class="genres"><span *ngFor="let genre of show.genres" class="genre">{{genre.name | lowercase}}; </span></div>
     <p class="overview">{{show.overview}}</p>
 
+
+<!-- block of content which is only visible on /detail page    -->
     <div class="details">
       <p *ngIf="show.release_date"><strong>Release date</strong>: {{show.release_date | date }}</p>
       <p *ngIf="show.vote_average"><strong>People rate this movie as</strong>: {{show.vote_average | number}}/10</p>
