@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeTabComponent} from './components/tabs/home-tab/home-tab.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MovieService} from './services/movie.service';
+import {ShowService} from './services/show.service';
 import {TrendingTabComponent} from './components/tabs/trending-tab/trending-tab.component';
 import {DetailTabComponent} from './components/tabs/detail-tab/detail-tab.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -31,7 +31,7 @@ import {SearchFormComponent} from './components/tabs/search-tab/search-form/sear
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [MovieService],
+  providers: [ShowService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

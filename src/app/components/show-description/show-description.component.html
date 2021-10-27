@@ -1,8 +1,24 @@
 <div *ngIf="show" class="show-description">
-  <div class="show-description_container poster" id="poster"><img src="{{posterUrl}}" alt="poster"></div>
+
+  <div class="show-description_container poster" id="poster">
+    <img *ngIf="show.poster_path" src="{{posterUrl}}" alt="poster" class="poster_img">
+    <div *ngIf="!show.poster_path" class="no-img">No image found.</div>
+  </div>
+
   <div class="show-description_container" id="description">
-    <h2 class="title">{{show.title || show.name}}</h2>
+    <h2 class="title"><a routerLink="/detail/{{showType}}/{{show.id}}">{{show.title || show.name}}</a></h2>
     <div class="genres"><span *ngFor="let genre of show.genres" class="genre">{{genre.name | lowercase}}; </span></div>
     <p class="overview">{{show.overview}}</p>
+
+    <div class="details">
+      <p *ngIf="show.release_date"><strong>Release date</strong>: {{show.release_date | date }}</p>
+      <p *ngIf="show.vote_average"><strong>People rate this movie as</strong>: {{show.vote_average | number}}/10</p>
+      <p *ngIf="show.budget"><strong>Budget</strong>: {{show.budget | currency}}</p>
+
+      <p *ngIf="show.number_of_episodes"><strong>Number of episodes</strong>: {{show.number_of_episodes | number}}</p>
+      <p *ngIf="show.languages"><strong>Languages</strong>: <span *ngFor="let language of show.languages">{{language}};</span></p>
+    </div>
   </div>
+
+
 </div>

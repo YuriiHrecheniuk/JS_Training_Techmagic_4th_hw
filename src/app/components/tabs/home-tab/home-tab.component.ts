@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MovieService} from '../../../services/movie.service';
+import {ShowService} from '../../../services/show.service';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,15 @@ import {MovieService} from '../../../services/movie.service';
 })
 export class HomeTabComponent implements OnInit {
 
-  movieId = 0;
+  showId = 0;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: ShowService) {
   }
 
   ngOnInit(): void {
     this.movieService.getDiscover(getRandomInt(1, 501))
-      .subscribe(discover => {
-        this.movieId = discover.results[getRandomInt(1, 20)].id;
+      .subscribe(results => {
+        this.showId = results[getRandomInt(1, results.length)];
       });
   }
 }

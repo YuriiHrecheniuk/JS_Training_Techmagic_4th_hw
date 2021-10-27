@@ -1,8 +1,17 @@
-.results {
-  display: flex;
-  width: 90%;
-  margin: auto;
-  flex-flow: wrap;
-  justify-content: center;
+:host {
+  position: relative;
+  top: 20px;
+  margin-bottom: 100px;
+
+  .results {
+    display: flex;
+    width: 90%;
+    margin: 20px auto;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 }
+
+
 

@@ -1,5 +1,8 @@
 .show-description {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
   box-sizing: border-box;
+  height: 100%;
   max-height: fit-content;
   display: flex;
 
@@ -9,15 +12,23 @@
     height: 90%;
   }
 
+  a { color: black; }
+
+  .details { display: none; }
+
   .poster {
     display: flex;
     justify-content: center;
     align-content: center;
 
-    img {
+    &_img {
       margin-right: 50px;
       width: 90%;
       border-radius: 10px;
+    }
+
+    .no-img {
+      height: 100%;
     }
   }
 
@@ -41,8 +52,8 @@
   .show-description {
     font-size: 1.2rem;
     width: 700px;
-    min-height: 500px;
-    margin: auto auto 90px;
+    height: fit-content;
+    margin: auto;
   }
 }
 
@@ -58,6 +69,7 @@
       width: fit-content;
       max-width: 100%;
       margin: 20px auto;
+      text-align: center;
     }
 
     .genres, .overview {
@@ -69,11 +81,16 @@
       justify-content: center;
       align-content: center;
 
-      img {
+      &_img {
         margin-right: 0;
         width: 90%;
+        max-height: 90%;
         border-radius: 10px;
       }
     }
   }
+}
+
+:host-context(.detail-container) {
+  .details { display: block }
 }

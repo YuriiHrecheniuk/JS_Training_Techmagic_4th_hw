@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {MovieService} from '../../services/movie.service';
+import {ShowService} from '../../services/show.service';
 import {IShow} from '../../models/show.interface';
 
 @Component({
@@ -17,7 +17,7 @@ export class ShowDescriptionComponent implements OnChanges {
 
   show!: IShow;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: ShowService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,7 +27,6 @@ export class ShowDescriptionComponent implements OnChanges {
           this.show = show;
           this.posterUrl += show.poster_path;
           this.genres = show.genres.map(genre => genre.name);
-          console.log(this.show);
         });
     }
   }

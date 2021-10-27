@@ -9,9 +9,9 @@ import {SearchTabComponent} from './components/tabs/search-tab/search-tab.compon
 const routes: Routes = [
   {path: 'home', component: HomeTabComponent},
   {path: 'trending', component: TrendingTabComponent},
-  {path: 'detail/:id', component: DetailTabComponent},
+  {path: 'detail/:showType/:id', component: DetailTabComponent},
   {path: 'search', component: SearchTabComponent},
-  {path: '**', redirectTo: '/home-tab'}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({

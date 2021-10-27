@@ -3,17 +3,19 @@
 
 :root {
   --main-font: Roboto, sans-serif;
+  --navbar-height: 90px;
 }
 
 body, html {
-  height: 100vh;
+  height: 100%;
   margin: 0;
   font-family: var(--main-font);
 }
 
 .main-content {
   position: relative;
-  top: 20px;
+  top: var(--navbar-height);
+  padding-bottom: 50px;
 
   &_title {
     text-transform: uppercase;

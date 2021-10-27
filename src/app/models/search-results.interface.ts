@@ -1,5 +1,5 @@
 import {IShow} from './show.interface';
 
-export interface ISearchResults {
+export interface IResults {
   results: IShow[];
 }

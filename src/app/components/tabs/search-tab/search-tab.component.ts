@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ISearchParams} from '../../../models/search-params.interface';
-import {MovieService} from '../../../services/movie.service';
+import {ShowService} from '../../../services/show.service';
 import {IShow} from '../../../models/show.interface';
 
 @Component({
@@ -12,17 +12,17 @@ export class SearchTabComponent {
 
   type!: 'movie' | 'tv';
 
-  searchResults: IShow[] = [];
+  searchResultsIds: number[] = [];
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: ShowService) {
   }
 
   search(searchParams: ISearchParams): void {
     this.type = searchParams.type;
 
     this.movieService.search(searchParams)
-      .subscribe(searchResults => {
-        this.searchResults = searchResults.results;
+      .subscribe(results => {
+        this.searchResultsIds = results;
       });
   }
 

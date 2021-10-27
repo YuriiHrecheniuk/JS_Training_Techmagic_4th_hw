@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MovieService} from 'src/app/services/movie.service';
-import {ITrending} from '../../../models/trending.interface';
+import {ShowService} from 'src/app/services/show.service';
 
 @Component({
   selector: 'app-trending',
@@ -9,15 +8,14 @@ import {ITrending} from '../../../models/trending.interface';
 })
 export class TrendingTabComponent implements OnInit {
 
-  movieIDs!: number[];
+  showIds!: number[];
 
-  constructor(private movieService: MovieService) {
-  }
+  constructor(private movieService: ShowService) {}
 
   ngOnInit(): void {
     this.movieService.getTrending('movie', 'week')
-      .subscribe((trending: ITrending) => {
-        this.movieIDs = trending.results.map(movie => movie.id);
+      .subscribe(showIds => {
+        this.showIds = showIds;
       });
   }
 

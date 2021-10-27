@@ -5,4 +5,11 @@ export interface IShow {
   genres: { name: string }[];
   overview: string;
   poster_path: string;
+
+  release_date?: string;
+  vote_average?: number;
+  budget?: number;
+
+  number_of_episodes?: number;
+  languages?: string[];
 }

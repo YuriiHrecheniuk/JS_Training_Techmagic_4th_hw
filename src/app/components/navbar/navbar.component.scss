@@ -1,12 +1,12 @@
 .navbar {
+  width: 100%;
   z-index: 1000;
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
 
   &-btn {
-    --btn-height: 90px;
-    height: var(--btn-height);
+    height: var(--navbar-height);
     text-transform: uppercase;
     width: 100%;
     background: #00848C;
@@ -16,7 +16,7 @@
     }
 
     a {
-      line-height: var(--btn-height);
+      line-height: var(--navbar-height);
       text-align: center;
       display: block;
       width: 100%;

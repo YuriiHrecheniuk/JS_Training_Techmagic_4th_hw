@@ -1,31 +1,25 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {environment} from '../../../../environments/environment';
-import {MovieService} from '../../../services/movie.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-detail',
   templateUrl: './detail-tab.component.html',
   styleUrls: ['./detail-tab.component.scss']
 })
-export class DetailTabComponent {
+export class DetailTabComponent implements OnInit {
 
-  posterUrl = environment.IMG_URL;
+  routerParams: Params = {
+    showType: '',
+    showId: 0,
+  };
 
-  movie: any;
+  constructor(private route: ActivatedRoute) {}
 
-  constructor(private route: ActivatedRoute,
-              private movieService: MovieService) {
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.routerParams.showType = params.showType;
+      this.routerParams.showId = +params.id;
+    });
   }
-
-  // ngOnInit(): void {
-  //   this.route.params.subscribe((params: Params) => {
-  //     this.movieService.getShow(params.id)
-  //       .subscribe((movie: IShow) => {
-  //         this.movie = movie;
-  //         this.posterUrl += movie.poster_path;
-  //       });
-  //   });
-  // }
 }
