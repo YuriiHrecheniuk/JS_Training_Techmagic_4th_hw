@@ -13,6 +13,10 @@ export class HomeTabComponent implements OnInit {
   constructor(private showService: ShowService) {}
 
   ngOnInit(): void {
+    this.showRandomMovie();
+  }
+
+  showRandomMovie(): void {
     this.showService.getDiscover(getRandomInt(1, 501))
       .subscribe(results => {
         this.showId = results[getRandomInt(1, results.length)];

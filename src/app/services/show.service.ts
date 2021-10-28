@@ -2,9 +2,8 @@ import {environment} from '../../environments/environment';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IDiscover} from '../models/discover.interface';
 import {ISearchParams} from '../models/search-params.interface';
-import {IResults} from '../models/search-results.interface';
+import {IResults, IResultsIds} from '../models/results.interface';
 import {IShow} from '../models/show.interface';
 import {map, pluck} from 'rxjs/operators';
 
@@ -41,21 +40,27 @@ export class ShowService {
       .set('with_original_language', 'en')
       .set('include_adult', 'false');
 
-    return this.httpClient.get<IDiscover>(`${environment.BASE_URL}/discover/movie`,
+    return this.httpClient.get<IResults>(`${environment.BASE_URL}/discover/movie`,
       {...this.httpOptions, params: queryParams})
       .pipe(pluck('results'))
       .pipe(map(results => results.filter(result => result.poster_path)))
       .pipe(map(results => results.map(result => result.id)));
   }
 
-  public search(searchParams: ISearchParams): Observable<number[]> {
+  public search(searchParams: ISearchParams): Observable<IResultsIds> {
     const queryParams = new HttpParams()
-      .set('query', searchParams.query);
+      .set('query', searchParams.query)
+      .set('page', `${searchParams.page}`);
 
-    return this.httpClient.get<IResults>(`${environment.BASE_URL}/search/${searchParams.type}`,
+    return this.httpClient.get<Required<IResults>>(`${environment.BASE_URL}/search/${searchParams.type}`,
       {...this.httpOptions, params: queryParams})
-      .pipe(pluck('results'))
-      .pipe(map(results => results.map(result => result.id)));
+      .pipe(map(obs => {
+        return {
+          ids: obs.results.map(result => result.id),
+          total_pages: obs.total_pages,
+        };
+      }));
+      // .pipe(map(results => results.map(result => result.id)));
   }
 
 }

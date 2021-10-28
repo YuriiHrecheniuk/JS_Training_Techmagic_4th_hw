@@ -2,16 +2,19 @@
   position: relative;
   top: 20px;
   margin-bottom: 100px;
-
-  .results {
-    display: flex;
-    width: 90%;
-    margin: 20px auto;
-    flex-flow: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
 }
 
+.results {
+  display: flex;
+  width: 90%;
+  margin: 20px auto;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 10px;
+}
 
-
+.more-btn {
+  width: fit-content;
+  height: 50px;
+  font-size: 30px;
+}

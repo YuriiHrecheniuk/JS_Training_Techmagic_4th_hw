@@ -12,19 +12,20 @@ export class ShowDescriptionComponent implements OnChanges {
 
   @Input() showId!: number;
   @Input() showType!: 'tv' | 'movie';
-  posterUrl = environment.IMG_URL;
+  posterUrl!: string;
   genres: string[] = [];
 
   show!: IShow;
 
-  constructor(private movieService: ShowService) {}
+  constructor(private movieService: ShowService) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.showId) {
       this.movieService.getShow(this.showType, this.showId)
         .subscribe(show => {
           this.show = show;
-          this.posterUrl += show.poster_path;
+          this.posterUrl = environment.IMG_URL + show.poster_path;
           this.genres = show.genres.map(genre => genre.name);
         });
     }

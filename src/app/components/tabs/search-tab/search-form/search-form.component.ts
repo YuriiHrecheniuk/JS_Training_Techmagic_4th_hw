@@ -13,6 +13,7 @@ export class SearchFormComponent {
   @Output() searchParams = new EventEmitter<ISearchParams>();
 
   onSubmit(form: NgForm): void {
+    form.value.page = 1;
     this.searchParams.emit(form.value);
   }
 
