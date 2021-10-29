@@ -33,4 +33,3 @@ function getRandomInt(min: number,
 
 // when user visits the page he gets a random movie to watch
 
-// todo: add button to refresh random movie

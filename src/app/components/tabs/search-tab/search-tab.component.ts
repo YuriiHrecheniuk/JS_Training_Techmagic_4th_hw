@@ -10,14 +10,11 @@ import {IResultsIds} from '../../../models/results.interface';
 })
 export class SearchTabComponent {
 
-  hidden = true;
-
   searchParams!: ISearchParams;
 
   searchResults: IResultsIds | null = null;
 
-  constructor(private movieService: ShowService) {
-  }
+  constructor(private movieService: ShowService) {}
 
   search(searchParams: ISearchParams): void {
     this.searchParams = searchParams;
@@ -30,16 +27,12 @@ export class SearchTabComponent {
   }
 
   showMore(): void {
-    if (this.searchResults && !this.isFinished()) {
-      this.searchParams.page++;
+    this.searchParams.page++;
 
-      this.movieService.search(this.searchParams)
-        .subscribe(results => {
-          this.searchResults!.ids.push(...results.ids);
-        });
-    } else {
-      this.hidden = true;
-    }
+    this.movieService.search(this.searchParams)
+      .subscribe(results => {
+        this.searchResults!.ids.push(...results.ids);
+      });
   }
 
   isFinished(): boolean {
@@ -47,5 +40,3 @@ export class SearchTabComponent {
   }
 
 }
-
-// todo: add button to see more search results
