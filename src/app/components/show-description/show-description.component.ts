@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@an
 import {environment} from '../../../environments/environment';
 import {ShowService} from '../../services/show.service';
 import {IShow} from '../../models/show.interface';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-show-description',
@@ -18,10 +18,11 @@ export class ShowDescriptionComponent implements OnChanges, OnDestroy {
 
   show!: IShow;
 
+  show$!: Observable<IShow>;
+
   subscription!: Subscription;
 
-  constructor(private movieService: ShowService) {
-  }
+  constructor(private movieService: ShowService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.showId) {
