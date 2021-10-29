@@ -1,6 +1,6 @@
-<main class="main-content trending-container detail-container">
+<main class="main-content trending-container detail-container" *ngIf="routerParams">
   <app-show-description
-    [showId]="routerParams.showId"
+    [showId]="+routerParams.id"
     [showType]="routerParams.showType"></app-show-description>
 </main>
 

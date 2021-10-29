@@ -9,17 +9,13 @@ import {ActivatedRoute, Params} from '@angular/router';
 })
 export class DetailTabComponent implements OnInit {
 
-  routerParams: Params = {
-    showType: '',
-    showId: 0,
-  };
+  routerParams!: Params;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.routerParams.showType = params.showType;
-      this.routerParams.showId = +params.id;
+      this.routerParams = params;
     });
   }
 }

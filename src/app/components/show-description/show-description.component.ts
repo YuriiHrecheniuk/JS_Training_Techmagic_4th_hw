@@ -13,7 +13,7 @@ export class ShowDescriptionComponent implements OnChanges {
   @Input() showId!: number;
   @Input() showType!: 'tv' | 'movie';
   posterUrl!: string;
-  genres: string[] = [];
+  genres!: string[];
 
   show!: IShow;
 
@@ -21,13 +21,11 @@ export class ShowDescriptionComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.showId) {
-      this.movieService.getShow(this.showType, this.showId)
-        .subscribe(show => {
-          this.show = show;
-          this.posterUrl = environment.IMG_URL + show.poster_path;
-          this.genres = show.genres.map(genre => genre.name);
-        });
-    }
+    this.movieService.getShow(this.showType, this.showId)
+      .subscribe(show => {
+        this.show = show;
+        this.posterUrl = environment.IMG_URL + show.poster_path;
+        this.genres = show.genres.map(genre => genre.name);
+      });
   }
 }

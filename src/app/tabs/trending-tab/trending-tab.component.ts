@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShowService} from 'src/app/services/show.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-trending',
@@ -8,15 +9,12 @@ import {ShowService} from 'src/app/services/show.service';
 })
 export class TrendingTabComponent implements OnInit {
 
-  showIds!: number[];
+  showIds$!: Observable<number[]>;
 
   constructor(private movieService: ShowService) {}
 
   ngOnInit(): void {
-    this.movieService.getTrending('movie', 'week')
-      .subscribe(showIds => {
-        this.showIds = showIds;
-      });
+    this.showIds$ = this.movieService.getTrending('movie', 'week');
   }
 
 }

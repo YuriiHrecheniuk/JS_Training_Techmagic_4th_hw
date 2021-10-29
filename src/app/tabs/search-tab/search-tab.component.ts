@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {ISearchParams} from '../../models/search-params.interface';
 import {ShowService} from '../../services/show.service';
 import {IResultsIds} from '../../models/results.interface';
+import {forkJoin, Observable} from 'rxjs';
+import {map, pluck} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -10,33 +12,32 @@ import {IResultsIds} from '../../models/results.interface';
 })
 export class SearchTabComponent {
 
+  searchResults$!: Observable<IResultsIds>;
+  totalShows$!: Observable<number[]>;
   searchParams!: ISearchParams;
-
-  searchResults: IResultsIds | null = null;
+  totalPages!: number;
 
   constructor(private movieService: ShowService) {}
 
   search(searchParams: ISearchParams): void {
     this.searchParams = searchParams;
-    this.searchResults = null;
 
-    this.movieService.search(searchParams)
-      .subscribe(results => {
-        this.searchResults = results;
-      });
+    this.searchResults$ = this.movieService.search(searchParams);
+
+    this.totalShows$ = this.searchResults$.pipe(pluck('ids'));
+    this.searchResults$.pipe(pluck('total_pages'))
+      .subscribe(totalPages => this.totalPages = totalPages);
   }
 
   showMore(): void {
     this.searchParams.page++;
 
-    this.movieService.search(this.searchParams)
-      .subscribe(results => {
-        this.searchResults!.ids.push(...results.ids);
-      });
+    const moreResults$ = this.movieService.search(this.searchParams)
+      .pipe(pluck('ids'));
+
+    this.totalShows$ = forkJoin([this.totalShows$, moreResults$])
+      .pipe(map(([s1, s2]) => [...s1, ...s2]));
   }
 
-  isFinished(): boolean {
-    return this.searchParams.page >= this.searchResults!.total_pages;
-  }
-
+  isFinished = () => this.searchParams.page >= this.totalPages;
 }

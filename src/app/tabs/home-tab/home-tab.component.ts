@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShowService} from '../../services/show.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import {ShowService} from '../../services/show.service';
 })
 export class HomeTabComponent implements OnInit {
 
-  showId = 0;
+  showId$!: Observable<number>;
 
   constructor(private showService: ShowService) {}
 
@@ -17,10 +19,8 @@ export class HomeTabComponent implements OnInit {
   }
 
   showRandomMovie(): void {
-    this.showService.getDiscover(getRandomInt(1, 501))
-      .subscribe(results => {
-        this.showId = results[getRandomInt(1, results.length)];
-      });
+    this.showId$ = this.showService.getDiscover(getRandomInt(1, 501))
+      .pipe(map(results => results[getRandomInt(1, results.length)]));
   }
 }
 
