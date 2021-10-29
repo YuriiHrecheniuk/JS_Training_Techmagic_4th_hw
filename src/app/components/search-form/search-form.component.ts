@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {ISearchParams} from '../../../../models/search-params.interface';
+import {ISearchParams} from '../../models/search-params.interface';
 import {NgForm} from '@angular/forms';
 
 @Component({

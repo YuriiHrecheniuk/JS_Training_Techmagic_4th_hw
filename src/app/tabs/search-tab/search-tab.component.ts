@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ISearchParams} from '../../../models/search-params.interface';
-import {ShowService} from '../../../services/show.service';
-import {IResultsIds} from '../../../models/results.interface';
+import {ISearchParams} from '../../models/search-params.interface';
+import {ShowService} from '../../services/show.service';
+import {IResultsIds} from '../../models/results.interface';
 
 @Component({
   selector: 'app-search',
