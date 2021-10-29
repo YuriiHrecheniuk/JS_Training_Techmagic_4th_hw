@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ISearchParams} from '../../models/search-params.interface';
 import {ShowService} from '../../services/show.service';
 import {IResultsIds} from '../../models/results.interface';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin, Observable, Subscription} from 'rxjs';
 import {map, pluck} from 'rxjs/operators';
 
 @Component({
@@ -10,12 +10,14 @@ import {map, pluck} from 'rxjs/operators';
   templateUrl: './search-tab.component.html',
   styleUrls: ['./search-tab.component.scss']
 })
-export class SearchTabComponent {
+export class SearchTabComponent implements OnDestroy {
 
   searchResults$!: Observable<IResultsIds>;
   totalShows$!: Observable<number[]>;
   searchParams!: ISearchParams;
   totalPages!: number;
+
+  subscription!: Subscription;
 
   constructor(private movieService: ShowService) {}
 
@@ -25,7 +27,7 @@ export class SearchTabComponent {
     this.searchResults$ = this.movieService.search(searchParams);
 
     this.totalShows$ = this.searchResults$.pipe(pluck('ids'));
-    this.searchResults$.pipe(pluck('total_pages'))
+    this.subscription = this.searchResults$.pipe(pluck('total_pages'))
       .subscribe(totalPages => this.totalPages = totalPages);
   }
 
@@ -40,4 +42,8 @@ export class SearchTabComponent {
   }
 
   isFinished = () => this.searchParams.page >= this.totalPages;
+
+  ngOnDestroy(): void {
+    this.subscription && this.subscription.unsubscribe();
+  }
 }
