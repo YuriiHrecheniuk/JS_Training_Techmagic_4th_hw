@@ -1,7 +1,7 @@
 <main class="home-container main-content">
   <h1 class="main-content_title">can`t choose what to watch? try this:</h1>
   <button class="load-btn reload-btn" (click)="showRandomMovie()">&#8634;</button>
-  <app-show-description *ngIf="showId$"
+  <app-show-description *ngIf="showId$ | async as showId"
                         [showType]="'movie'"
-                        [showId]="showId$ | async"></app-show-description>
+                        [showId]="showId"></app-show-description>
 </main>

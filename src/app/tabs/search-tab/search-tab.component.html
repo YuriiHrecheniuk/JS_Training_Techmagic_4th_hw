@@ -1,11 +1,14 @@
 <main class="main-content search-container">
   <app-search-form (searchParams)="search($event)"></app-search-form>
-  <div class="results" *ngIf="totalShows$">
-    <app-show-description *ngFor="let id of totalShows$ | async"
-                          [showType]="searchParams.type"
-                          [showId]="id"></app-show-description>
+  <div *ngIf="searchResults$ | async as searchResults">
+    <div class="results">
+      <app-show-description *ngFor="let id of totalShows$ | async"
+                            [showType]="searchParams.type"
+                            [showId]="id"></app-show-description>
+      <button *ngIf="totalShows$ &&
+                 this.searchParams.page < searchResults.total_pages"
+              (click)="showMore()"
+              class="load-btn more-btn">show more...</button>
+    </div>
   </div>
-  <button *ngIf="totalShows$ && !isFinished()"
-          (click)="showMore()"
-          class="load-btn more-btn">show more...</button>
 </main>

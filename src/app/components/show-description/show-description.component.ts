@@ -9,33 +9,20 @@ import {Observable, Subscription} from 'rxjs';
   templateUrl: './show-description.component.html',
   styleUrls: ['./show-description.component.scss']
 })
-export class ShowDescriptionComponent implements OnChanges, OnDestroy {
+export class ShowDescriptionComponent implements OnChanges {
 
   @Input() showId!: number;
   @Input() showType!: 'tv' | 'movie';
-  posterUrl!: string;
-  genres!: string[];
+  @Input() detail = false;
 
-  show!: IShow;
-
+  posterBaseUrl = environment.IMG_URL;
   show$!: Observable<IShow>;
-
-  subscription!: Subscription;
 
   constructor(private movieService: ShowService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.showId) {
-      this.subscription = this.movieService.getShow(this.showType, this.showId)
-        .subscribe(show => {
-          this.show = show;
-          this.posterUrl = environment.IMG_URL + show.poster_path;
-          this.genres = show.genres.map(genre => genre.name);
-        });
+      this.show$ = this.movieService.getShow(this.showType, this.showId);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription && this.subscription.unsubscribe();
   }
 }

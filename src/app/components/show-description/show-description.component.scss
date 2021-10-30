@@ -14,8 +14,6 @@
 
   a { color: black; }
 
-  .details { display: none; }
-
   .poster {
     display: flex;
     justify-content: center;
@@ -92,8 +90,4 @@
       }
     }
   }
-}
-
-:host-context(.detail-container) {
-  .details { display: block }
 }

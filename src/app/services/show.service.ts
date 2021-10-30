@@ -42,9 +42,12 @@ export class ShowService {
 
     return this.httpClient.get<IResults>(`${environment.BASE_URL}/discover/movie`,
       {...this.httpOptions, params: queryParams})
-      .pipe(pluck('results'))
-      .pipe(map(results => results.filter(result => result.poster_path)))
-      .pipe(map(results => results.map(result => result.id)));
+      .pipe(
+        pluck('results'),
+        map(results =>
+          results.filter(result => result.poster_path)
+            .map(result => result.id))
+      );
   }
 
   public search(searchParams: ISearchParams): Observable<IResultsIds> {

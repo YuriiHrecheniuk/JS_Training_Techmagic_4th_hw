@@ -1,7 +1,7 @@
 <main class="main-content">
   <h1 class="main-content_title">Top movies this week:</h1>
-  <ol *ngIf="showIds$">
-    <li *ngFor="let id of showIds$ | async" class="trending-container">
+  <ol *ngIf="showIds$ | async as showIds">
+    <li *ngFor="let id of showIds" class="trending-container">
       <app-show-description [showType]="'movie'" [showId]="id"></app-show-description>
     </li>
   </ol>
